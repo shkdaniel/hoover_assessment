@@ -6,7 +6,7 @@ from pytest_bdd import scenario, given, then, parsers
 EXTRA_TYPES = {
     'Number': int,
     'String': str,
-    'List': list,
+    'Eval': eval,
 }
 
 # Shared Variables
@@ -21,14 +21,14 @@ def test_api():
 
 # Given Steps
 @pytest.fixture()
-@given(parsers.cfparse('the hoover API is posted with data {roomSize}, '
-                       '{coords}, {patches} and {instructions:String}',
+@given(parsers.cfparse('the hoover API is posted with data {roomSize:Eval}, '
+                       '{coords:Eval}, {patches:Eval} and {instructions:String}',
                        extra_types=EXTRA_TYPES), target_fixture='service_response')
 def service_response(roomSize, coords, patches, instructions):
     data = {
-        "roomSize": eval(roomSize),
-        "coords": eval(coords),
-        "patches": eval(patches),
+        "roomSize": roomSize,
+        "coords": coords,
+        "patches": patches,
         "instructions": instructions
     }
     headers = {"Content-Type": "application/json"}
@@ -41,14 +41,14 @@ def service_response_code(service_response, statusCode):
     assert service_response.status_code == statusCode
 
 
-@then(parsers.parse('the response contains results for "{coordsFinal}" and "{patchesCount:Number}"', extra_types=EXTRA_TYPES))
+@then(parsers.parse('the response contains results for "{coordsFinal:Eval}" and "{patchesCount:Number}"', extra_types=EXTRA_TYPES))
 def service_response_contents(service_response, coordsFinal, patchesCount):
     if len(service_response.text) > 0:
         try:
             if service_response.json()['status'] != 200:
                 print(service_response.json()['message'])
         except KeyError:
-            assert eval(coordsFinal) == service_response.json()['coords']
+            assert coordsFinal == service_response.json()['coords']
             assert patchesCount == service_response.json()['patches']
 
 
