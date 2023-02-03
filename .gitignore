@@ -1,3 +1,4 @@
 /.pytest_cache/
 /assets/
 /report.html
+/tests/step_defs/.pytest_cache/

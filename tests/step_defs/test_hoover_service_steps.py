@@ -1,6 +1,5 @@
 import requests
 import pytest
-import json
 
 from pytest_bdd import scenario, given, then, parsers
 
@@ -49,7 +48,7 @@ def service_response_contents(service_response, coordsFinal, patchesCount):
             if service_response.json()['status'] != 200:
                 print(service_response.json()['message'])
         except KeyError:
-            assert json.loads(coordsFinal) == service_response.json()['coords']
+            assert eval(coordsFinal) == service_response.json()['coords']
             assert patchesCount == service_response.json()['patches']
 
 
