@@ -1,0 +1,4 @@
+/.pytest_cache/
+/assets/
+/report.html
+/tests/step_defs/xx_01.py
