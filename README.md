@@ -50,11 +50,15 @@ pipenv run python -m pytest -v --html=report.html
 
 ## Bugs found
 
-Bug #1:
+<ins>Bug #1:</ins> API request counts dirt patches by hoovering but leaves them untouched,
+so the next route counts the dirt patches from the previous request in case it hoovers them.
 
-Bug #2:
+<ins>Bug #2:</ins>: given hoover X coordinate cannot be out of room space, given hoover Y coordinate cannot be equal or bigger then room space.
+API response doesn't return proper output, expected a "Bad Request" message with status 400. 
 
-Bug #3:
+<ins>Bug #3:</ins>: API response returns 200 status code for a request with number of dirt patches bigger then room size,  expected a "Bad Request" message with status 400.
+
+<ins>Bug #4:</ins>: API response returns 200 status code for a request with coordinates of dirt patches out of room size,  expected a "Bad Request" message with status 400.
 
 ## Screenshots
 
