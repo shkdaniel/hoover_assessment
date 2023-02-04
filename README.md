@@ -62,6 +62,9 @@ API response doesn't return proper output, expected a "Bad Request" message with
 
 ## Screenshots
 
-<img src="docs/pycharm.png">
+<img src="docs/hoover_docker_screenshot.png">
 
-<img src="docs/report.png">
+<img src="docs/pycharm_screenshot.png">
+
+<img src="docs/html_report_screenshot.png">
+
