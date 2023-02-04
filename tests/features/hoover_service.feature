@@ -29,7 +29,7 @@ Feature: Hoover service
     Examples: Boundary tests: patches location is out of room space / number of patches bigger than room space
       | roomSize | coords | patches             | instructions | statusCode | coordsFinal | patchesCount |
       | [1,1]    | [0,0]  | [[0,0],[1, 1]]      | NNESEESWNWW  | 400        | [0,0]       | 0            |
-      | [1,1]    | [0,0]  | [[0,0],[0, 1]]      | NNESEESWNWW  | 400        | [0,0]       | 0            |
+      | [1,1]    | [0,0]  | [[0,1]]             | NNESEESWNWW  | 400        | [0,0]       | 0            |
       | [1,1]    | [0,0]  | [[0,0],[1, 0]]      | NNESEESWNWW  | 400        | [0,0]       | 0            |
       | [1,1]    | [0,0]  | [[5, 5]]            | NNESEESWNWW  | 400        | [0,0]       | 0            |
 
